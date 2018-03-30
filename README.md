@@ -13,7 +13,9 @@
 
 **下载地址**
 > http://archive.cloudera.com/cdh5/cdh/5/sqoop-1.4.6-cdh5.5.2.tar.gz 
+>
 > 下载后解压到 /opt/cdh5/sqoop
+>
 > tar -zxvf sqoop-1.4.6-cdh5.5.2.tar.gz -C /opt/cdh5/sqoop
 
 ### 需要的jar包
@@ -89,9 +91,15 @@ Sqoop 1.4.5-cdh5.4.1
 
 说明：
 --connect jdbc:mysql://10.10.97.116:3306/rsearch 表示远程或者本地 Mysql 服务的URI，3306是Mysql默认监听端口，rsearch是数据库，若是其他数据库，如Oracle,只需修改URI即可。
+
 --table researchers  表示导出rsearch数据库的researchers表。
+
 --hbase-table A  表示在HBase中建立表A。
+
 --column-family person 表示在表A中建立列族person。
+
 --hbase-row-key id  表示表A的row-key是researchers表的id字段。
+
 --hbase-create-table 表示在HBase中建立表。
+
 --username 'root' 表示使用用户root连接Mysql。
