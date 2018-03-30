@@ -12,25 +12,26 @@
 ### 下载
 
 **下载地址**
-	>  http://archive.cloudera.com/cdh5/cdh/5/sqoop-1.4.6-cdh5.5.2.tar.gz 
-	下载后解压到 /opt/cdh5/sqoop
-	tar -zxvf sqoop-1.4.6-cdh5.5.2.tar.gz -C /opt/cdh5/sqoop
+> http://archive.cloudera.com/cdh5/cdh/5/sqoop-1.4.6-cdh5.5.2.tar.gz 
+> 下载后解压到 /opt/cdh5/sqoop
+> tar -zxvf sqoop-1.4.6-cdh5.5.2.tar.gz -C /opt/cdh5/sqoop
 
 ###需要的jar包
 
 **jdbc 驱动包**　
-	> 拷贝mysql-connector-Java-5.1.31-bin.jar到sqoop/lib目录下。
+> 拷贝mysql-connector-Java-5.1.31-bin.jar到sqoop/lib目录下。
+
 
 ###配置环境变量
 > vi etc/profile 
 
-```
+```sh
 export SQOOP_HOME=/opt/cdh5/sqoop
 export PATH=$PATH:$SQOOP_HOME/bin
 ```
 
 ###修改conf/sqoop-env.sh
-```
+```sh
 #Set path to where bin/hadoop is available
 export HADOOP_COMMON_HOME=/opt/cloud/hadoop-2.6.0-cdh5.4.1/
 
@@ -49,7 +50,7 @@ export ZOOCFGDIR=/opt/cloud/zookeeper-3.4.8/
 ```
 
 ###修改bin/configure-sqoop
-```
+```sh
 ## Moved to be a runtime check in sqoop.
 #if [ ! -d "${HBASE_HOME}" ]; then
 #  echo "Warning: $HBASE_HOME does not exist! HBase imports will fail."
@@ -74,19 +75,16 @@ export ZOOCFGDIR=/opt/cloud/zookeeper-3.4.8/
 ```
 
 ###测试
-```
+```sh
 ./sqoop version
 17/05/09 19:02:04 INFO sqoop.Sqoop: Running Sqoop version: 1.4.5-cdh5.4.1
 Sqoop 1.4.5-cdh5.4.1
-git commit id 8e266e052e423af592871e2dfe09d54c03f6a0e8
-Compiled by jenkins on Thu May  7 22:44:23 PDT 2015
-
 ```
 如上就成功
 
 ###导入数据
-```
-./sqoop import --connect jdbc:mysql://10.10.97.116:3306/rsearch --table researchers--hbase-table A--column-family person --hbase-row-key id --hbase-create-table --username 'root' -P
+```sh
+./sqoop import --connect jdbc:mysql://localhost:3306/rsearch --table researchers--hbase-table A--column-family person --hbase-row-key id --hbase-create-table --username 'root' -P
 ```
 
 说明：
