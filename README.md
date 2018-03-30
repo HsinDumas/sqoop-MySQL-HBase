@@ -82,23 +82,21 @@ export ZOOCFGDIR=/opt/cloud/zookeeper-3.4.8/
 17/05/09 19:02:04 INFO sqoop.Sqoop: Running Sqoop version: 1.4.5-cdh5.4.1
 Sqoop 1.4.5-cdh5.4.1
 ```
-如上就成功
-
 ### 导入数据
 ```sh
-./sqoop import --connect jdbc:mysql://localhost:3306/rsearch --table researchers--hbase-table A--column-family person --hbase-row-key id --hbase-create-table --username 'root' -P
+./sqoop import --connect jdbc:mysql://localhost:3306/test --table test--hbase-table A--column-family person --hbase-row-key id --hbase-create-table --username 'root' -P
 ```
 
 说明：
 --connect jdbc:mysql://10.10.97.116:3306/rsearch 表示远程或者本地 Mysql 服务的URI，3306是Mysql默认监听端口，rsearch是数据库，若是其他数据库，如Oracle,只需修改URI即可。
 
---table researchers  表示导出rsearch数据库的researchers表。
+--table test 表示导出test数据库的test表。
 
 --hbase-table A  表示在HBase中建立表A。
 
 --column-family person 表示在表A中建立列族person。
 
---hbase-row-key id  表示表A的row-key是researchers表的id字段。
+--hbase-row-key id  表示表A的row-key是test表的id字段。
 
 --hbase-create-table 表示在HBase中建立表。
 
