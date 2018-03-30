@@ -16,13 +16,13 @@
 > 下载后解压到 /opt/cdh5/sqoop
 > tar -zxvf sqoop-1.4.6-cdh5.5.2.tar.gz -C /opt/cdh5/sqoop
 
-###需要的jar包
+### 需要的jar包
 
 **jdbc 驱动包**　
 > 拷贝mysql-connector-Java-5.1.31-bin.jar到sqoop/lib目录下。
 
 
-###配置环境变量
+### 配置环境变量
 > vi etc/profile 
 
 ```sh
@@ -30,7 +30,7 @@ export SQOOP_HOME=/opt/cdh5/sqoop
 export PATH=$PATH:$SQOOP_HOME/bin
 ```
 
-###修改conf/sqoop-env.sh
+### 修改conf/sqoop-env.sh
 ```sh
 #Set path to where bin/hadoop is available
 export HADOOP_COMMON_HOME=/opt/cloud/hadoop-2.6.0-cdh5.4.1/
@@ -49,7 +49,7 @@ export ZOOCFGDIR=/opt/cloud/zookeeper-3.4.8/
 
 ```
 
-###修改bin/configure-sqoop
+### 修改bin/configure-sqoop
 ```sh
 ## Moved to be a runtime check in sqoop.
 #if [ ! -d "${HBASE_HOME}" ]; then
@@ -74,7 +74,7 @@ export ZOOCFGDIR=/opt/cloud/zookeeper-3.4.8/
 
 ```
 
-###测试
+### 测试
 ```sh
 ./sqoop version
 17/05/09 19:02:04 INFO sqoop.Sqoop: Running Sqoop version: 1.4.5-cdh5.4.1
@@ -82,7 +82,7 @@ Sqoop 1.4.5-cdh5.4.1
 ```
 如上就成功
 
-###导入数据
+### 导入数据
 ```sh
 ./sqoop import --connect jdbc:mysql://localhost:3306/rsearch --table researchers--hbase-table A--column-family person --hbase-row-key id --hbase-create-table --username 'root' -P
 ```
